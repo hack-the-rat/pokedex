@@ -13,7 +13,7 @@ const fetchPokemon = () => {
             image: data.sprites['front_default'],
             type: data.types.map( type => type.type.name).join(', ')
         }));
-        displayPokemon.log(pokemon);
+        displayPokemon(pokemon);
     });
 };
 
