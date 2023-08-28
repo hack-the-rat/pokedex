@@ -9,7 +9,7 @@ const fetchPokemon = () => {
             const pokemon = {
                 name: data.name,
                 id: data.id,
-                image: data.sprites['front-default'],
+                image: data.sprites['front_default'],
                 type: data.types.map( type => type.type.name).join(', ')
             };
             console.log(pokemon);
