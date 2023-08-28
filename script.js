@@ -6,6 +6,13 @@ const fetchPokemon = () => {
         })
         .then( data => {
             console.log(data);
+            const pokemon = {
+                name: data.name,
+                id: data.id,
+                image: data.sprites['front-default'],
+                type: data.types.map( type => type.type.name).join(', ')
+            };
+            console.log(pokemon);
         });
 };
 
