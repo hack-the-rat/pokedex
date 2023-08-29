@@ -25,6 +25,8 @@ const fetchPokemon = () => {
 
 const displayPokemon = (pokemon) => {
     console.log(pokemon);
+    const html = `<li>Bulbasaur</li>`;
+    pokedex.innerHTML = html;
 };
 
 fetchPokemon();
