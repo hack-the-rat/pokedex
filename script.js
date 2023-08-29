@@ -5,7 +5,7 @@ console.log(pokedex);
 const fetchPokemon = () => {
 
     const promises = [];
-    for (let i = 1; i <= 150; i++) {
+    for (let i = 1; i <= 250; i++) {
         const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
         promises.push(fetch(url).then((res) => res.json()));
     }    
@@ -25,8 +25,14 @@ const fetchPokemon = () => {
 
 const displayPokemon = (pokemon) => {
     console.log(pokemon);
-    const html = `<li>Bulbasaur</li>`;
-    pokedex.innerHTML = html;
+    const pokemonHTMLString = pokemon.map((pokeman) => `
+        <li>
+            <img src="${pokeman.image}"/>
+            <h2>${pokeman.id}. ${pokeman.name}</h2>
+            <p>Type: ${pokeman.type}</p>
+        </li>
+    `);
+    pokedex.innerHTML = pokemonHTMLString;
 };
 
 fetchPokemon();
