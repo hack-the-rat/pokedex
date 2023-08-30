@@ -3,3 +3,10 @@ body {
 	margin: 0;
 	font-family: "rubik";
 }
+
+.card {
+	list-style: none;
+	padding: 40px;
+	background-color: #f4f4f4;
+	color: #222;
+}

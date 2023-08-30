@@ -1,8 +1,8 @@
-const pokedex = document.getElementById("pokedex");
+const pokédex = document.getElementById("pokedex");
 
-console.log(pokedex);
+console.log(pokédex);
 
-const fetchPokemon = () => {
+const fetchPokémon = () => {
 
     const promises = [];
     for (let i = 1; i <= 250; i++) {
@@ -11,7 +11,7 @@ const fetchPokemon = () => {
     }    
 
     Promise.all(promises).then((results) => {
-        const pokemon = results.map((data) => ({
+        const pokémon = results.map((data) => ({
             name: data.name,
             id: data.id,
             image: data.sprites['front_default'],
@@ -19,20 +19,20 @@ const fetchPokemon = () => {
             height: data.height,
             width: data.weight
         }));
-        displayPokemon(pokemon);
+        displayPokemon(pokémon);
     });
 };
 
-const displayPokemon = (pokemon) => {
-    console.log(pokemon);
-    const pokemonHTMLString = pokemon.map((pokeman) => `
+const displayPokemon = (pokémon) => {
+    console.log(pokémon);
+    const pokémonHTMLString = pokémon.map((pokéman) => `
         <li class="card">
-            <img class="card-image" src="${pokeman.image}"/>
-            <h2 class="card.title">${pokeman.id}. ${pokeman.name}</h2>
-            <p class="card-subtitle">Type: ${pokeman.type}</p>
+            <img class="card-image" src="${pokéman.image}"/>
+            <h2 class="card.title">${pokéman.id}. ${pokéman.name}</h2>
+            <p class="card-subtitle">Type: ${pokéman.type}</p>
         </li>
     `).join('');
-    pokedex.innerHTML = pokemonHTMLString;
+    pokédex.innerHTML = pokémonHTMLString;
 };
 
-fetchPokemon();
+fetchPokémon();
