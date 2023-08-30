@@ -18,7 +18,7 @@ const fetchPokémon = () => {
             type: data.types.map( type => type.type.name).join(', '),
             height: data.height,
             width: data.weight,
-            ability: data.abilities.map(ability => ability.ability.name).join(','),
+            ability: data.abilities.map(ability => ability.ability.name).join(', '),
             moves: data.moves.map(move => move.move.name).slice(0, 10).join(', ')
         }));
         displayPokemon(pokémon);
