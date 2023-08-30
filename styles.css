@@ -9,6 +9,7 @@ body {
 	padding: 40px;
 	background-color: #f4f4f4;
 	color: #222;
+	display: grid;
 }
 
 .card-title {
@@ -22,6 +23,11 @@ body {
 	font-weight: lighter;
 	color: #666;
 	margin-top: 5px;
+}
+
+.card-image {
+	height: 180px;
+	margin: 0 auto;
 }
 
 #pokédex {
