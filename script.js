@@ -1,4 +1,4 @@
-const pokédex = document.getElementById("pokedex");
+const pokédex = document.getElementById("pokédex");
 
 console.log(pokédex);
 

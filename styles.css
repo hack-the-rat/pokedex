@@ -10,3 +10,7 @@ body {
 	background-color: #f4f4f4;
 	color: #222;
 }
+
+#pokédex {
+	padding-inline-start: 0;
+}
