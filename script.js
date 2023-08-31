@@ -61,6 +61,8 @@ const selectPokémon = async (id) => {
 
 const displayPopup = (pokéman) => {
     console.log(pokéman);
+    const type = pokéman.types.map((type) => type.type.name).join(', ');
+    console.log(type);
 };
 
 fetchPokémon();
