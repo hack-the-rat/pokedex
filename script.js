@@ -2,10 +2,15 @@ const pokédex = document.getElementById("pokédex");
 
 console.log(pokédex);
 
-const fetchPokémon = () => {
+const fetchPokémon = async () => {
 
-    const promises = [];
-    for (let i = 1; i <= 384; i++) {
+    const url = `https://pokeapi.co/api/v2/pokemon?limit=490`;
+    const res = await fetch(url);
+    const data = await res.json();
+    console.log(data);
+
+    /* const promises = [];
+    for (let i = 1; i <= 490; i++) {
         const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
         promises.push(fetch(url).then((res) => res.json()));
     }    
@@ -16,13 +21,13 @@ const fetchPokémon = () => {
             id: data.id,
             image: data.sprites['front_default'],
             type: data.types.map( type => type.type.name).join(', '),
-            height: data.height,
-            width: data.weight,
+            height: (data.height * .1).toFixed(1),
+            width: (data.weight * .1).toFixed(1),
             ability: data.abilities.map(ability => ability.ability.name).join(', '),
             moves: data.moves.map(move => move.move.name).slice(0, 10).join(', ')
         }));
         displayPokemon(pokémon);
-    });
+    }); */
 };
 
 const displayPokemon = (pokémon) => {
