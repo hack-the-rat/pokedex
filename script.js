@@ -53,7 +53,14 @@ const displayPokémon = (pokémon) => {
 };
 
 const selectPokémon = async (id) => {
-    console.log(id);
+    const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+    const res = await fetch(url);
+    const pokéman = await res.json();
+    displayPopup(pokéman);
+};
+
+const displayPopup = (pokéman) => {
+    console.log(pokéman);
 };
 
 fetchPokémon();
