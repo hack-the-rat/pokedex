@@ -7,7 +7,11 @@ const fetchPokémon = async () => {
     const url = `https://pokeapi.co/api/v2/pokemon?limit=490`;
     const res = await fetch(url);
     const data = await res.json();
-    console.log(data);
+    const pokémon = data.results.map((result, index) => ({
+        name: data.name,
+        id: index + 1,
+        image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`
+    }));
 
     /* const promises = [];
     for (let i = 1; i <= 490; i++) {
@@ -26,11 +30,13 @@ const fetchPokémon = async () => {
             ability: data.abilities.map(ability => ability.ability.name).join(', '),
             moves: data.moves.map(move => move.move.name).slice(0, 10).join(', ')
         }));
-        displayPokemon(pokémon);
+        displayPokémon(pokémon);
     }); */
+    console.log(data.results);
+    displayPokémon(pokémon);
 };
 
-const displayPokemon = (pokémon) => {
+const displayPokémon = (pokémon) => {
     console.log(pokémon);
     const pokémonHTMLString = pokémon.map((pokéman) => `
         <li class="card">
