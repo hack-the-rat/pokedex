@@ -33,13 +33,14 @@ body {
 }
 
 .card-title {
-	text-transform: uppercase;
+	text-transform: capitalize;
 	font-size: 32px;
 	font-weight: normal;
 	margin-bottom: 0;
 }
 
 .card-subtitle {
+	text-transform: capitalize;
 	font-weight: lighter;
 	color: #666;
 	margin-top: 5px;
