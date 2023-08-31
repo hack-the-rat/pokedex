@@ -10,7 +10,12 @@ const fetchPokémon = async () => {
     const pokémon = data.results.map((result, index) => ({
         ...result,
         id: index + 1,
-        image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`
+        image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`,
+        height: (data.height * .1).toFixed(1),
+        width: (data.weight * .1).toFixed(1),
+        type: data.types.map( type => type.type.name).join(', '),
+        ability: data.abilities.map(ability => ability.ability.name).join(', '),
+        moves: data.moves.map(move => move.move.name).slice(0, 10).join(', ')
     }));
 
     /* const promises = [];
@@ -42,11 +47,6 @@ const displayPokémon = (pokémon) => {
         <li class="card" onclick="selectPokémon(${pokéman.id})">
             <img class="card-image" src="${pokéman.image}"/>
             <h2 class="card-title">${pokéman.id}. ${pokéman.name}</h2>
-            <p class="card-subtitle">Type: ${pokéman.type}</p>
-            <p class="card-subtitle">Height: ${pokéman.height}</p>
-            <p class="card-subtitle">Weight: ${pokéman.weight}</p>
-            <p class="card-subtitle">Ability: ${pokéman.ability}</p>
-            <p class="card-subtitle">Moves: ${pokéman.moves}</p>
         </li>
     `).join('');
     pokédex.innerHTML = pokémonHTMLString;
@@ -62,7 +62,20 @@ const selectPokémon = async (id) => {
 const displayPopup = (pokéman) => {
     console.log(pokéman);
     const type = pokéman.types.map((type) => type.type.name).join(', ');
-    console.log(type);
+    const htmlString = `
+        <div class="popup">
+            <button id="closeBtn" onclick="closePopup()">Close</button>
+            <div class="card">
+                <img class="card-image" src="${pokéman.image}"/>
+                <h2 class="card-title">${pokéman.id}. ${pokéman.name}</h2>
+                <p><small>Height: </small>${pokéman.height} | <small>Weight: </small>${pokéman.weight}</p>
+                <p class="card-subtitle">Type: ${pokéman.type}</p>
+                <p class="card-subtitle">Ability: ${pokéman.ability}</p>
+                <p class="card-subtitle">Moves: ${pokéman.moves}</p>
+            </div>
+        </div>
+    `;
+    console.log(htmlString);
 };
 
 fetchPokémon();
