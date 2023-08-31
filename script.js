@@ -56,6 +56,7 @@ const selectPokémon = async (id) => {
 
 const displayPopup = (pokéman) => {
     console.log(pokéman);
+    const image = pokéman.sprites['front_default'];
     const type = pokéman.types.map((type) => type.type.name).join(', ');
     const ability = pokéman.abilities.map(ability => ability.ability.name).join(', ');
     const moves = pokéman.moves.map(move => move.move.name).slice(0, 10).join(', ');
@@ -63,7 +64,7 @@ const displayPopup = (pokéman) => {
         <div class="popup">
             <button id="closeBtn" onclick="closePopup()">Close</button>
             <div class="card">
-                <img class="card-image" src="${pokéman.image}"/>
+                <img class="card-image" src="${image}"/>
                 <h2 class="card-title">${pokéman.id}. ${pokéman.name}</h2>
                 <p><small>Height: </small>${pokéman.height} | <small>Weight: </small>${pokéman.weight}</p>
                 <p class="card-subtitle">Type: ${type}</p>
