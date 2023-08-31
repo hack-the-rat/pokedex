@@ -13,7 +13,7 @@ const fetchPokémon = async () => {
         image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`,
         height: (data.height * .1).toFixed(1),
         width: (data.weight * .1).toFixed(1),
-        type: data.types.map( type => type.type.name).join(', '),
+        type: data.types.map((type) => type.type.name).join(', '),
         ability: data.abilities.map(ability => ability.ability.name).join(', '),
         moves: data.moves.map(move => move.move.name).slice(0, 10).join(', ')
     }));
