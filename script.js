@@ -2,7 +2,7 @@ const pokédex = document.getElementById("pokédex");
 
 const fetchPokémon = async () => {
 
-    const url = `https://pokeapi.co/api/v2/pokemon?limit=490`;
+    const url = `https://pokeapi.co/api/v2/pokemon?limit=650`;
     const res = await fetch(url);
     const data = await res.json();
     const pokémon = data.results.map((result, index) => ({
@@ -77,6 +77,11 @@ const displayPopup = (pokéman) => {
     `;
     pokédex.innerHTML = htmlString + pokédex.innerHTML;
     console.log(htmlString);
+};
+
+const closePopup = () => {
+    const popup = document.querySelector('.popup');
+    popup.parentElement.removeChild(popup);
 };
 
 fetchPokémon();
