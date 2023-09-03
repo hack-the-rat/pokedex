@@ -29,12 +29,14 @@ const displayPokémon = (pokémon) => {
 };
 
 const selectPokémon = async (id) => {
-    const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
-    const res = await fetch(url);
-    const pokéman = await res.json();
-    pokéCache[id] = pokéman;
-    console.log(pokéCache);
-    displayPopup(pokéman);
+    if (!pokéCache[id]) {
+        const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+        const res = await fetch(url);
+        const pokéman = await res.json();
+        pokéCache[id] = pokéman;
+        displayPopup(pokéman);
+    }
+    displayPopup(pokéCache[id]);
 };
 
 const displayPopup = (pokéman) => {
