@@ -1,8 +1,8 @@
 const pokédex = document.getElementById("pokédex");
-
+const pokéCache = {};
 const fetchPokémon = async () => {
 
-    const url = `https://pokeapi.co/api/v2/pokemon?limit=809`;
+    const url = `https://pokeapi.co/api/v2/pokemon?limit=898`;
     const res = await fetch(url);
     const data = await res.json();
     const pokémon = data.results.map((result, index) => ({
@@ -13,25 +13,6 @@ const fetchPokémon = async () => {
         width: (data.weight * .1).toFixed(1)
     }));
 
-    /* const promises = [];
-    for (let i = 1; i <= 490; i++) {
-        const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
-        promises.push(fetch(url).then((res) => res.json()));
-    }    
-
-    Promise.all(promises).then((results) => {
-        const pokémon = results.map((data) => ({
-            name: data.name,
-            id: data.id,
-            image: data.sprites['front_default'],
-            type: data.types.map( type => type.type.name).join(', '),
-            height: (data.height * .1).toFixed(1),
-            width: (data.weight * .1).toFixed(1),
-            ability: data.abilities.map(ability => ability.ability.name).join(', '),
-            moves: data.moves.map(move => move.move.name).slice(0, 10).join(', ')
-        }));
-        displayPokémon(pokémon);
-    }); */
     console.log(data.results);
     displayPokémon(pokémon);
 };
@@ -51,6 +32,8 @@ const selectPokémon = async (id) => {
     const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
     const res = await fetch(url);
     const pokéman = await res.json();
+    pokéCache[id] = pokéman;
+    console.log(pokéCache);
     displayPopup(pokéman);
 };
 
