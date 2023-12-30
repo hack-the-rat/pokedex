@@ -48,7 +48,7 @@ async function fetchTypeChart() {
     footerP("Fetching type chart");
     window.typeChart = {};
     try {
-        let typeChartUrl = "https://raw.githubusercontent.com/ydarissep/dex-core/main/src/typeChart.json"
+        let typeChartUrl = "https://raw.githubusercontent.com/hack-the-rat/pokedex/main/src/typeChart.json"
         if (typeof repoTypeChartUrl !== "undefined") {
             typeChartUrl = repoTypeChartUrl;
         }
